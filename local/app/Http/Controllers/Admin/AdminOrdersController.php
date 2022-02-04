@@ -15,7 +15,7 @@ class AdminOrdersController extends Controller
     public function index()
     {
         abort_unless(Gate::allows('products_order'),403,'شما به این بخش دسترسی ندارید');
-        $orders = Order::where(['reservation'=>'no'])->orderby('created_at','desc')->select('factor_number', 'user_id', 'pay_status')->distinct()->paginate(20);
+        $orders = Order::where(['reservation'=>'no'])->orderby('created_at','desc')->select('factor_number', 'user_id', 'pay_status','created_at')->distinct()->paginate(20);
 
         $Active_list="products";
         $Active="orders";
