@@ -1,0 +1,102 @@
+label {
+    font-weight: lighter;
+}
+
+h5 {
+    font-weight: lighter;
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:focus {
+    background-color: #ef6969 !important;
+}
+
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:focus {
+    background-color: #61c579 !important;
+}
+
+.btn:not(.btn-link):not(.btn-circle) {
+    box-shadow: unset;
+}
+
+.ali-m-bottom-6 {
+    margin-bottom: 8px !important;
+}
+
+.scroll {
+    background-color: #fff;
+    height: 120px;
+    width: content-box;
+    overflow-y: scroll;
+}
+
+.ali-border-b {
+    border-bottom: 2px solid #61c579 !important;
+    margin-bottom: 14px;
+}
+
+.ali-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .ali-flex {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .ali-margin-0{
+        margin-left: 0 ;
+    }
+    .ali-margin-top-8{
+        margin-top: 8px;
+    }
+
+    /**{*/
+    /*    font-size: 26px;*/
+    /*}*/
+
+    .popover.bottom {
+        top: 2674px !important;
+        display: block !important;
+        right: 50px !important;
+        min-width: max-content !important;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+    .popover.bottom {
+        top: 2508px !important;
+        display: block !important;
+        right: 80px !important;
+    }
+
+}
+
+button{
+    letter-spacing: unset !important;
+}
+
+.lbl-cursor{
+    cursor: pointer !important;
+}
+
+td{
+    vertical-align: middle !important;
+}
+
+@media (min-width: 1281px) {
+
+    .popover.bottom {
+        top: 960px !important;
+        display: block !important;
+        min-width: auto !important;
+        right: 1050px !important;
+        left: unset !important;
+    }
+
+}
+

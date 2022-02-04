@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Vazir";
+    src: url("../../fonts/Vazir.eot");
+    src: url("../../fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+    url("../../fonts/Vazir.woff") format("woff"),
+    url("../../fonts/Vazir.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal
+}
+div,span,a,h1,h2,h3,h4,h5,h6,p,label,select,input{
+    font-family: Vazir;
+}

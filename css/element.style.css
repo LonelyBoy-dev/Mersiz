@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir.woff') format('woff'),
+    url('../fonts/Vazir.ttf') format('truetype');
+    font-weight: normal;
+}
+body{
+    font-family: Vazir !important;
+}
+h1,h2,h3,h4,h5,h6,span,a{
+    font-family: Vazir !important;
+}
+.dropdown-menu.pull-right {
+    right: auto;
+    left: 5px;
+}
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: absolute;
+    left: auto;
+    opacity: 0;
+}
+
+.file-field.medium .file-path-wrapper {
+    height: 3rem; }
+.file-field.medium .file-path-wrapper .file-path {
+    height: 2.8rem; }
+
+.file-field.big-2 .file-path-wrapper {
+    height: 3.7rem; }
+.file-field.big-2 .file-path-wrapper .file-path {
+    height: 3.5rem; }

@@ -1,0 +1,119 @@
+.sidenav>.card{
+    box-shadow: 0px 5px 4px -2px #a2a2a2ad;
+}
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 2147483647; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #f6f6f6; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 0px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.alertify-notifier{
+    z-index: 2147483648; /* Stay on top */
+}
+.ajs-message { color: #fcfcfc !important;  background-color: #7b63ff !important;  border-color: #6a55db !important; }
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 12px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.bootstrap-touchspin .input-group-btn {
+    width: 36px;
+    height: 36px;
+    border: 4px solid transparent;
+}
+.text-secondary {
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    padding: 8px;
+}
+.bootstrap-touchspin {
+    width: 100%;
+    height: 36px;
+    background-color: #fff;
+    border-radius: 3.75rem;
+    border: 1px solid #e0e0e0;
+    flex-direction: row-reverse;
+}
+.bootstrap-touchspin .form-control {
+    padding: 0;
+    border: 0;
+    background-color: #fff;
+    font-size: 16px;
+    height: 34px;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    text-align: center;
+    font-weight: bolder;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.bootstrap-touchspin .input-group-btn .btn-primary {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #eeeeee;
+    border: 0;
+    min-width: 100%;
+    cursor: pointer;
+    font-size: 0;
+    box-sizing: border-box;
+    line-height: 32px;
+    text-align: center;
+    vertical-align: top;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 24px;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    color: #555;
+    font-size: 20px;
+}
+
+.input-group-btn>button{
+    border-radius: 14px !important;
+}
