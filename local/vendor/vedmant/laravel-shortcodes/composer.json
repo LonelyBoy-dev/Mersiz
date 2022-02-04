@@ -1,0 +1,49 @@
+{
+    "name": "vedmant/laravel-shortcodes",
+    "description": "Wordress like shortcodes for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vedmant",
+            "email": "vedmant@gmail.com",
+            "homepage": "https://vedmant.com/laravel-shortcodes"
+        }
+    ],
+    "homepage": "https://github.com/vedmant/laravel-shortcodes",
+    "keywords": ["Laravel", "Shortcodes"],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/contracts": ">=5.5.0",
+        "illuminate/view": ">=5.5.0",
+        "illuminate/support": ">=5.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "mockery/mockery": "^1.2",
+        "orchestra/testbench": "^4",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Vedmant\\LaravelShortcodes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vedmant\\LaravelShortcodes\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vedmant\\LaravelShortcodes\\LaravelShortcodesServiceProvider"
+            ],
+            "aliases": {
+                "FeedReader": "Vedmant\\LaravelShortcodes\\Facades\\FeedReader"
+            }
+        }
+    }
+}
