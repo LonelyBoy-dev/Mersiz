@@ -424,7 +424,7 @@ Route::get('/torder', function () {
 
     // Purchase the given invoice.
     Payment::purchase($invoice, function ($driver, $transactionId) {
-        dd($transactionId);
+        dd($driver);
     });
 
     // Purchase method accepts a callback function.
