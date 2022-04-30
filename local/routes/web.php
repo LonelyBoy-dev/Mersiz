@@ -424,7 +424,7 @@ Route::get('/torder', function () {
 
     $invoice = new Invoice();
     $transactionid = $invoice->uuid();
-    $$invoice->amount(1000);
+    $invoice->amount(1000);
 
     return Payment::callbackUrl('https://mersiz.com/tverify/' . $transactionid)->purchase(
         function ($driver, $transactionId) {
