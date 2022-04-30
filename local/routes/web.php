@@ -11,8 +11,10 @@
 |
 */
 
+use App\Order;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
+use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 use Shetabit\Multipay\Invoice;
 use Shetabit\Payment\Facade\Payment;
 
@@ -420,14 +422,59 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 
 Route::get('/torder', function () {
 
-    return Payment::purchase(
-        (new Invoice)->amount(1000), 
-        function($driver, $transactionId) {
-            // Store transactionId in database.
-            // We need the transactionId to verify payment in the future.
+    return Payment::callbackUrl('https://mersiz.com/tverify')->purchase(
+        (new Invoice)->amount(1000),
+        function ($driver, $transactionId) {
+            dd($driver);
+            $order = new Order();
+            $order->factor_number = $transactionId;
+            $order->user_id = 1;
+            $order->pay_method = '';
+            $order->pay_status = '';
+            $order->authority = '';
+            $order->refId = '';
+            $order->product_id = '';
+            $order->seller_id = '';
+            $order->type = '';
+            $order->price = '';
+            $order->disprice = '';
+            $order->send_price = '';
+            $order->sale = '';
+            $order->count = '';
+            $order->name = '';
+            $order->family = '';
+            $order->mobile = '';
+            $order->tell = '';
+            $order->state = '';
+            $order->city = '';
+            $order->address = '';
+            $order->location = '';
+            $order->send_day = '';
+            $order->send_time = '';
+            $order->description = '';
+            $order->send_status = '';
+            $order->day_status = '';
+            $order->first_buy_mony = '';
+            $order->total = '';
+            $order->discountcode = '';
+            $order->discountcode_darsad = '';
+            $order->linkdownload = '';
+            $order->reservation = '';
+            $order->verification_code = '';
+            // در این بخش transactionId را ذخیره می کنیم.
+            // برای تایید پرداخت در مرحله بعد به این transactionId نیاز داریم.
         }
     )->pay()->render();
-
 });
 
 
+Route::get('/tverify', function () {
+
+    try {
+        $receipt = Payment::amount(1000)->transactionId($transaction_id)->verify();
+        echo $receipt->getReferenceId();
+    } catch (InvalidPaymentException $exception) {
+       
+        echo $exception->getMessage();
+    }
+});
