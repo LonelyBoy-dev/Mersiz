@@ -428,6 +428,7 @@ Route::get('/torder', function () {
 
     return Payment::callbackUrl('https://mersiz.com/tverify/'.$invoice->getUuid())->purchase($invoice,
         function ($driver, $transactionId) {
+            dd($invoice->getUuid().'|'.$transactionId);
             $order = new Order();
             $order->factor_number = $transactionId;
             $order->user_id = 1;
@@ -472,6 +473,7 @@ Route::get('/torder', function () {
 
 Route::get('/tverify/{transactionid}', function ($transactionid) {
     $is_order = Order::where('factor_number', $transactionid)->first();
+
     if (!empty($is_order)) {
         try {
             $receipt = Payment::amount(1000)->transactionId($transactionid)->verify();
