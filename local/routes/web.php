@@ -422,13 +422,14 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 
 Route::get('/torder', function () {
 
-    return Payment::callbackUrl('https://mersiz.com/tverify')->purchase(
-        (new Invoice)->amount(1000),
+    $invoice = new Invoice();
+    $transactionid = $invoice->uuid();
+    $$invoice->amount(1000);
+
+    return Payment::callbackUrl('https://mersiz.com/tverify/' . $transactionid)->purchase(
         function ($driver, $transactionId) {
-            var_dump((array)$driver);
-            dd('');
             $order = new Order();
-            $order->factor_number = $transactionId;
+            $order->factor_number = $transactionid;
             $order->user_id = 1;
             $order->pay_method = '';
             $order->pay_status = '';
@@ -437,7 +438,7 @@ Route::get('/torder', function () {
             $order->product_id = '';
             $order->seller_id = '';
             $order->type = '';
-            $order->price = '';
+            $order->price = 1000;
             $order->disprice = '';
             $order->send_price = '';
             $order->sale = '';
@@ -462,20 +463,21 @@ Route::get('/torder', function () {
             $order->linkdownload = '';
             $order->reservation = '';
             $order->verification_code = '';
-            // در این بخش transactionId را ذخیره می کنیم.
-            // برای تایید پرداخت در مرحله بعد به این transactionId نیاز داریم.
+            $order->save();
         }
     )->pay()->render();
 });
 
 
-Route::get('/tverify', function () {
+Route::get('/tverify/{transactionid}', function ($transactionid) {
+    $is_order = Order::where('factor_number', $transactionid)->first();
+    if (!empty($is_order)) {
+        try {
+            $receipt = Payment::amount(1000)->transactionId($transactionid)->verify();
+            echo $receipt->getReferenceId();
+        } catch (InvalidPaymentException $exception) {
 
-    try {
-        $receipt = Payment::amount(1000)->transactionId($transaction_id)->verify();
-        echo $receipt->getReferenceId();
-    } catch (InvalidPaymentException $exception) {
-       
-        echo $exception->getMessage();
+            echo $exception->getMessage();
+        }
     }
 });
