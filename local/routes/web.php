@@ -419,15 +419,15 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 
 
 Route::get('/torder', function () {
+
     $invoice = (new Invoice)->amount(1000);
 
     Payment::callbackUrl('http://test-mersiz.com/verify')->purchase(
         $invoice,
         function ($driver, $transactionId) {
-            session()->put('transactionId', $transactionId);
+
         }
-    );
+    )->pay()->render();
 });
 
-dd( session()->get('transactionId'));
 
