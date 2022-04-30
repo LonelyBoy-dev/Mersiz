@@ -428,3 +428,6 @@ Route::get('/torder', function () {
         }
     );
 });
+
+dd(Session::get('transactionId'));
+
