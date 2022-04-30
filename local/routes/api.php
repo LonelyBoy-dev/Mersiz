@@ -42,3 +42,24 @@ Route::get('/getLikeProducts/{id}', 'Front\ApiController@getLikeProducts');
 
 Route::post('/registerMobile', 'Front\ApiController@registerMobile');
 Route::post('/registerCode', 'Front\ApiController@registerCode');
+
+
+
+
+///***************** Payment Cart  ******************/
+Route::get('order-verify', 'Front\OrderController@verify');
+Route::get('payment-verify', 'Front\PaymentController@verify');
+Route::get('order-verify-before', 'Front\OrderController@verifybefore');
+Route::get('payment-verify-before', 'Front\PaymentController@verifybefore');
+///***************** Payment Cart  ******************/
+
+
+///***************** Shopping Cart  ******************/
+Route::post('/addcart', 'Front\ShoppingCartController@addcart')->middleware('auth:sanctum');
+Route::post('/removecart', 'Front\ShoppingCartController@removecart')->middleware('auth:sanctum');
+Route::post('/updatecart', 'Front\ShoppingCartController@updatecart');
+Route::post('/CheckCart', 'Front\ShoppingCartController@CheckCart')->middleware('auth:sanctum');
+Route::post('/getCart', 'Front\ShoppingCartController@getCart')->middleware('auth:sanctum');
+///***************** Shopping Cart  ******************/
+
+
