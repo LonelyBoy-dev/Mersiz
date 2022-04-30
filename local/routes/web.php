@@ -423,12 +423,15 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 Route::get('/torder', function () {
 
     $invoice = new Invoice();
-    $unique_id = $invoice->uuid();
+    $invoice->uuid();
     $invoice->amount(1000);
+
     $invoice
         ->detail('description', "خرید فایل")
         ->detail('email', 'info@shdehnavi.ir')
         ->detail('mobile', '09123456789');
+
+    $unique_id = $invoice->getUuid();
 
     return Payment::callbackUrl('https://mersiz.com/tverify/' . $unique_id)->purchase(
         $invoice,
