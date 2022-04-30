@@ -478,7 +478,7 @@ Route::get('/torder', function () {
 });
 
 
-Route::get('/tverify/{uniqueid}', function ($unique_id) {
+Route::post('/tverify/{uniqueid}', function ($unique_id) {
 
     $is_order = Order::where('refId', $unique_id)->first();
 
