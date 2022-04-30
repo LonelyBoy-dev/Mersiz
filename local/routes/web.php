@@ -470,7 +470,7 @@ Route::get('/torder', function () {
 });
 
 
-Route::get('/tverify', function ($transactionid) {
+Route::get('/tverify/{transactionid}', function ($transactionid) {
     $is_order = Order::where('factor_number', $transactionid)->first();
     if (!empty($is_order)) {
         try {
