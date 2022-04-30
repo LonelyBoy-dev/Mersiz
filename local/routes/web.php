@@ -432,7 +432,7 @@ Route::get('/torder', function () {
             $order->factor_number = $transactionId;
             $order->user_id = 1;
             $order->pay_method = 'online';
-            $order->pay_status = '';
+            $order->pay_status = 'NOK';
             $order->authority = '';
             $order->refId = '';
             $order->product_id = '';
