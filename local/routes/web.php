@@ -471,13 +471,14 @@ Route::get('/torder', function () {
 
 
 Route::get('/tverify', function () {
+    // $is_order = Order::where('factor_number', $transactionid)->first();
+    // if (!empty($is_order)) {
+        try {
+            $receipt = Payment::amount(1000)->transactionId($transactionid)->verify();
+            echo $receipt->getReferenceId();
+        } catch (InvalidPaymentException $exception) {
 
-    $transaction_id =  Order::;
-    try {
-        $receipt = Payment::amount(1000)->transactionId($transaction_id)->verify();
-        echo $receipt->getReferenceId();
-    } catch (InvalidPaymentException $exception) {
-
-        echo $exception->getMessage();
-    }
+            echo $exception->getMessage();
+        }
+    // }
 });
