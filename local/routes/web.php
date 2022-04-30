@@ -426,8 +426,8 @@ Route::get('/torder', function () {
             // Store transactionId in database.
             // We need the transactionId to verify payment in the future.
         }
-    )->pay()->toJson();
-    
+    )->pay()->render();
+
 });
 
 
