@@ -426,9 +426,8 @@ Route::get('/torder', function () {
     $invoice->uuid();
     $invoice->amount(1000);
 
-    return Payment::callbackUrl('https://mersiz.com/tverify')->purchase($invoice,
+    return Payment::callbackUrl('https://mersiz.com/tverify/'.$invoice->getUuid())->purchase($invoice,
         function ($driver, $transactionId) {
-            dd(collect($driver));
             $order = new Order();
             $order->factor_number = $transactionId;
             $order->user_id = 1;
@@ -470,15 +469,15 @@ Route::get('/torder', function () {
 });
 
 
-Route::get('/tverify', function () {
-    // $is_order = Order::where('factor_number', $transactionid)->first();
-    // if (!empty($is_order)) {
-        // try {
-        //     $receipt = Payment::amount(1000)->transactionId($transactionid)->verify();
-        //     echo $receipt->getReferenceId();
-        // } catch (InvalidPaymentException $exception) {
+Route::get('/tverify', function ($transactionid) {
+    $is_order = Order::where('factor_number', $transactionid)->first();
+    if (!empty($is_order)) {
+        try {
+            $receipt = Payment::amount(1000)->transactionId($transactionid)->verify();
+            echo $receipt->getReferenceId();
+        } catch (InvalidPaymentException $exception) {
 
-        //     echo $exception->getMessage();
-        // }
-    // }
+            echo $exception->getMessage();
+        }
+    }
 });
