@@ -420,14 +420,14 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 
 Route::get('/torder', function () {
 
-    $invoice = (new Invoice)->amount(1000);
-
-    Payment::callbackUrl('http://test-mersiz.com/verify')->purchase(
-        $invoice,
-        function ($driver, $transactionId) {
-
+    return Payment::purchase(
+        (new Invoice)->amount(1000), 
+        function($driver, $transactionId) {
+            // Store transactionId in database.
+            // We need the transactionId to verify payment in the future.
         }
-    )->pay()->render();
+    )->pay()->toJson();
+    
 });
 
 
