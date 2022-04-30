@@ -456,7 +456,7 @@ Route::get('/torder', function () {
             $order->description = '';
             $order->send_status = 'در حال برسی';
             // $order->day_status = '';
-            $order->first_buy_mony = '';
+            $order->first_buy_mony = 0;
             $order->total = '1';
             $order->discountcode = '';
             $order->discountcode_darsad = '';
