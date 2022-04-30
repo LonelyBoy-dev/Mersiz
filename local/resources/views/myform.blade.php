@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{{{ route('tverify', ['id'=>1]) }}}}" method="post">
+    <form action="{{ route('tverify', ['id'=>1]) }}" method="post">
     <button type="submit">تست</button>
     </form>
 </body>
