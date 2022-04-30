@@ -424,9 +424,10 @@ Route::get('/torder', function () {
     Payment::callbackUrl('http://test-mersiz.com/verify')->purchase(
         $invoice,
         function ($driver, $transactionId) {
-            dd($transactionId);
+            session()->put('transactionId', $transactionId);
         }
     );
 });
 
+dd( session()->get('transactionId'));
 
