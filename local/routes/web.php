@@ -438,11 +438,11 @@ Route::get('/torder', function () {
         function ($driver, $transactionId) use ($unique_id) {
             $order = new Order();
             $order->factor_number = $transactionId;
-            $order->user_id = $unique_id;
+            $order->user_id = 1;
             $order->pay_method = 'online';
             $order->pay_status = 'NOK';
             $order->authority = '';
-            $order->refId = '';
+            $order->refId = $unique_id;
             $order->product_id = 2;
             $order->seller_id = 1;
             $order->type = 'فیزیکی';
@@ -480,7 +480,7 @@ Route::get('/torder', function () {
 
 Route::get('/tverify/{uniqueid}', function ($unique_id) {
 
-    $is_order = Order::where('user_id', $unique_id)->first();
+    $is_order = Order::where('refId', $unique_id)->first();
 
     if (!empty($is_order)) {
         try {
