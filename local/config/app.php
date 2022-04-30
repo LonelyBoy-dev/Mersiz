@@ -166,6 +166,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+		Shetabit\Payment\Provider\PaymentServiceProvider::class,
     ],
 
     /*
@@ -221,6 +222,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+		'Payment' => Shetabit\Payment\Facade\Payment::class,
     ],
 
 ];
