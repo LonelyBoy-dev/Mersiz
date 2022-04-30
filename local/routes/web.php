@@ -417,7 +417,9 @@ Route::get('/register-new-user', 'Front\FrontController@register_user_setEmail')
 Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone_number_code')->name('MobileVerifiedt.verify_phone_number_code');
 
 
-
+Route::get('/myform', function () {
+    return view('myform');
+});
 
 
 Route::get('/torder', function () {
@@ -492,4 +494,4 @@ Route::post('/tverify/{uniqueid}', function ($unique_id) {
             echo $exception->getMessage();
         }
     }
-});
+})->name('tverify');
