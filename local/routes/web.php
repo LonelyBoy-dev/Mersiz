@@ -459,10 +459,10 @@ Route::get('/torder', function () {
             $order->first_buy_mony = 0;
             $order->total = '1';
             $order->discountcode = '';
-            $order->discountcode_darsad = '';
+            $order->discountcode_darsad = 0;
             $order->linkdownload = '';
-            $order->reservation = '';
-            $order->verification_code = '';
+            $order->reservation = 'no';
+            // $order->verification_code = '';
             $order->save();
         }
     )->pay()->render();
