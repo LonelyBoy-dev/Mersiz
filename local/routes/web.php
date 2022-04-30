@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Session;
 use Shetabit\Multipay\Invoice;
 use Shetabit\Payment\Facade\Payment;
 
@@ -418,25 +419,12 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 
 
 Route::get('/torder', function () {
-
-    // Create new invoice.
     $invoice = (new Invoice)->amount(1000);
 
-    // Purchase the given invoice.
-    Payment::purchase($invoice, function ($driver, $transactionId) {
-        dd($driver);
-    });
-
-    // Purchase method accepts a callback function.
-    Payment::purchase($invoice, function ($driver, $transactionId) {
-        // We can store $transactionId in database.
-    });
-
-    // You can specify callbackUrl
-    Payment::callbackUrl('http://yoursite.com/verify')->purchase(
+    Payment::callbackUrl('http://test-mersiz.com/verify')->purchase(
         $invoice,
         function ($driver, $transactionId) {
-            // We can store $transactionId in database.
+            Session::set('transactionId', $transactionId);
         }
     );
 });
