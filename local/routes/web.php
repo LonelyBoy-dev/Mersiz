@@ -454,8 +454,8 @@ Route::get('/torder', function () {
             $order->send_day = 'پست ویژه';
             $order->send_time = '';
             $order->description = '';
-            $order->send_status = '';
-            $order->day_status = 'در حال بررسی';
+            $order->send_status = 'در حال بررسی';
+            $order->day_status = '';
             $order->first_buy_mony = '';
             $order->total = '1';
             $order->discountcode = '';
