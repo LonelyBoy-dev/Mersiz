@@ -417,11 +417,25 @@ Route::get('/register-new-user', 'Front\FrontController@register_user_setEmail')
 Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone_number_code')->name('MobileVerifiedt.verify_phone_number_code');
 
 
-Route::get('/myform', function () {
-    return view('myform');
-});
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=====================   درگاه پرداخت پارسیان========================    */
+
+//ثبت سفارش 
 Route::get('/torder', function () {
 
     $invoice = new Invoice();
@@ -479,9 +493,10 @@ Route::get('/torder', function () {
     )->pay()->render();
 });
 
-
+//تایید سفارش 
 Route::post('/tverify/{uniqueid}', function ($unique_id) {
 
+    dd('test');
     $is_order = Order::where('refId', $unique_id)->first();
 
     if (!empty($is_order)) {
@@ -495,7 +510,9 @@ Route::post('/tverify/{uniqueid}', function ($unique_id) {
     }
 })->name('tverify');
 
+//صفحه شبیه سازی ارسال فرم با متد پست
+Route::get('/myform', function () {
+    return view('myform');
+});
 
-Route::post('/cccccc/{uniqueid}', function ($unique_id) {
-    dd('hjghg');
-})->name('hhhhhhh');
+/*=====================   درگاه پرداخت پارسیان========================    */
