@@ -441,6 +441,7 @@ Route::get('/torder', function () {
             $order->price = 1000;
             $order->disprice = 0;
             $order->send_price = 6000;
+            $order->payprice = 6000;
             $order->sale = 0;
             $order->count = 1;
             $order->name = 'ehsan';
