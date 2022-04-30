@@ -423,15 +423,19 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 Route::get('/torder', function () {
 
     $invoice = new Invoice();
-    $invoice->uuid();
+    $unique_id = $invoice->uuid();
     $invoice->amount(1000);
+    $invoice
+        ->detail('description', "خرید فایل")
+        ->detail('email', 'info@shdehnavi.ir')
+        ->detail('mobile', '09123456789');
 
-    return Payment::callbackUrl('https://mersiz.com/tverify/'.$invoice->getUuid())->purchase($invoice,
-        function ($driver, $transactionId) {
-            dd($driver->invoice()->uuid);
+    return Payment::callbackUrl('https://mersiz.com/tverify/' . $unique_id)->purchase(
+        $invoice,
+        function ($driver, $transactionId) use ($unique_id) {
             $order = new Order();
             $order->factor_number = $transactionId;
-            $order->user_id = 1;
+            $order->user_id = $unique_id;
             $order->pay_method = 'online';
             $order->pay_status = 'NOK';
             $order->authority = '';
@@ -471,12 +475,13 @@ Route::get('/torder', function () {
 });
 
 
-Route::get('/tverify/{transactionid}', function ($transactionid) {
-    $is_order = Order::where('factor_number', $transactionid)->first();
+Route::get('/tverify/{uniqueid}', function ($unique_id) {
+
+    $is_order = Order::where('user_id', $unique_id)->first();
 
     if (!empty($is_order)) {
         try {
-            $receipt = Payment::amount(1000)->transactionId($transactionid)->verify();
+            $receipt = Payment::amount(1000)->transactionId($is_order->factor_number)->verify();
             echo $receipt->getReferenceId();
         } catch (InvalidPaymentException $exception) {
 
