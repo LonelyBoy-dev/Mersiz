@@ -425,7 +425,7 @@ Route::get('/torder', function () {
     return Payment::callbackUrl('https://mersiz.com/tverify')->purchase(
         (new Invoice)->amount(1000),
         function ($driver, $transactionId) {
-            var_dump($driver->toArray());
+            var_dump((array)$driver);
             dd('');
             $order = new Order();
             $order->factor_number = $transactionId;
