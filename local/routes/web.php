@@ -494,3 +494,8 @@ Route::post('/tverify/{uniqueid}', function ($unique_id) {
         }
     }
 })->name('tverify');
+
+
+Route::post('/cccccc/{uniqueid}', function ($unique_id) {
+dd('hjghg');
+})->name('hhhhhhh');
