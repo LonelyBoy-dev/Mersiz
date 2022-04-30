@@ -480,6 +480,7 @@ Route::get('/torder', function () {
 
 Route::post('/tverify/{uniqueid}', function ($unique_id) {
 
+    dd('sdfsdf');
     $is_order = Order::where('refId', $unique_id)->first();
 
     if (!empty($is_order)) {
