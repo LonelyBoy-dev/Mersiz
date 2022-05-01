@@ -90,7 +90,7 @@ class OrderController extends Controller
                     $invoice->uuid();
                     $invoice->amount($price);
                     $unique_id = $invoice->getUuid();
-                    return FacadePayment::callbackUrl(url('/') . '/payment-verify/' . $unique_id)->purchase(
+                    return FacadePayment::callbackUrl(url('/') . '/payment-verify?uniqueid=' . $unique_id)->purchase(
                         $invoice,
                         function ($driver, $transactionId) use ($unique_id, $request, $carts, $info_address, $first_buy_mony, $send_price, $Total, $factor, $discountcode, $discountcode_darsad) {
                             $code = Discountcode::where('code', $request->discountcode)->first();
@@ -101,6 +101,7 @@ class OrderController extends Controller
 
                             foreach ($carts as $cart) {
                                 $newPayment = new Order();
+                                $newPayment->unique_id = $unique_id;
                                 $newPayment->authority = $transactionId;
                                 $newPayment->user_id = Auth::id();
                                 $newPayment->product_id = $cart->options->product_id;
@@ -192,6 +193,7 @@ class OrderController extends Controller
                     }
                     foreach ($carts as $cart) {
                         $newPayment = new Order();
+                        $newPayment->unique_id = rand(000000000, 999999999);
                         $newPayment->authority = rand(000000000, 999999999);
                         $newPayment->user_id = Auth::id();
                         $newPayment->product_id = $cart->options->product_id;
@@ -234,6 +236,7 @@ class OrderController extends Controller
 
                         foreach ($carts as $cart) {
                             $newPayment = new Order();
+                            $newPayment->unique_id = rand(000000000, 999999999);
                             $newPayment->authority = rand(000000000, 999999999);
                             $newPayment->user_id = Auth::id();
                             $newPayment->product_id = $cart->options->product_id;
