@@ -36,12 +36,12 @@ class PaymentController extends Controller
             }
             foreach ($newPayments as $newPayment){
                 if($newPayment->type == 'دانلودی'){
-                    $newPayment->pay_status = $request->Status;
+                    $newPayment->pay_status = 'OK';
                     $newPayment->refId = $receipt->getReferenceId();
                     $newPayment->linkdownload = URL::temporarySignedRoute('UserDownloadFile', now()->addMinutes(180), ['id' => $newPayment->product_id,'user' => Auth::id()]);
                     $newPayment->save();
                 }else{
-                    $newPayment->pay_status = $request->Status;
+                    $newPayment->pay_status = 'OK';
                     $newPayment->refId = $receipt->getReferenceId();
                     $newPayment->pay_method = "online";
                     $newPayment->save();
