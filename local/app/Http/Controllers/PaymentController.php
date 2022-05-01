@@ -26,7 +26,7 @@ class PaymentController extends Controller
         
         $newPayments = Order::where('unique_id', $request->uniqueid)->get();
         try {
-            $receipt = FacadePayment::amount($price)->transactionId($newPayments->authority)->verify();
+            $receipt = FacadePayment::amount($price)->transactionId($newPayments[0]->authority)->verify();
             if (@$newPayments[0]->discountcode!="" and @$newPayments[0]->discountcode_darsad!=0){
                 $code = Discountcode::where('code', $newPayments[0]->discountcode)->first();
                 if ($code) {
