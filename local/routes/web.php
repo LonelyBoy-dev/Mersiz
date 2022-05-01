@@ -508,7 +508,7 @@ Route::post('/tverify', function ($unique_id) {
             echo $exception->getMessage();
         }
     }
-})->name('tverify');
+})->name('tverify-test');
 
 //صفحه شبیه سازی ارسال فرم با متد پست
 Route::get('/myform', function () {
