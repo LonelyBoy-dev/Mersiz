@@ -83,7 +83,7 @@ class PaymentController extends Controller
             Cart::destroy();
             session()->put('success_payment', 'پرداخت با موفقیت انجام شد.');
 
-            return redirect('/orderResultInfo/success=True?id='.ltrim($request->Authority, '0'));
+            return redirect('/orderResultInfo/success=True?id='.$newPayments[0]->authority);
 
 
         } catch (InvalidPaymentException $exception) {
