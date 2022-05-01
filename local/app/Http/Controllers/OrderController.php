@@ -94,6 +94,7 @@ class OrderController extends Controller
                         $invoice,
                         function ($driver, $transactionId) use ($unique_id, $request, $carts, $info_address, $first_buy_mony, $send_price, $Total, $factor, $discountcode, $discountcode_darsad) {
                             $code = Discountcode::where('code', $request->discountcode)->first();
+                         
                             if ($code) {
                                 $code->used = $code->used + 1;
                                 $code->save();

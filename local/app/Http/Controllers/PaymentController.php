@@ -13,6 +13,7 @@ use App\Payment;
 use App\Order;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\URL;
+use Shetabit\Payment\Facade\Payment as FacadePayment;
 
 class PaymentController extends Controller
 {
@@ -25,7 +26,7 @@ class PaymentController extends Controller
         
         $newPayments = Order::where('unique_id', $request->uniqueid)->get();
         try {
-            $receipt = Payment::amount($price)->transactionId($newPayments->authority)->verify();
+            $receipt = FacadePayment::amount($price)->transactionId($newPayments->authority)->verify();
             if (@$newPayments[0]->discountcode!="" and @$newPayments[0]->discountcode_darsad!=0){
                 $code = Discountcode::where('code', $newPayments[0]->discountcode)->first();
                 if ($code) {
