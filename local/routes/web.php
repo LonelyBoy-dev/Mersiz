@@ -508,9 +508,4 @@ Route::post('/tverify/{uniqueid}', function (Request $request) {
     }
 })->name('tverify-test');
 
-//صفحه شبیه سازی ارسال فرم با متد پست
-Route::get('/myform', function () {
-    return view('myform');
-});
-
 /*=====================   درگاه پرداخت پارسیان========================    */
