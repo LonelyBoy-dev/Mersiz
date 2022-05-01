@@ -91,6 +91,7 @@ class PaymentController extends Controller
             // echo $exception->getMessage();
 
             $user=User::find(Auth::id());
+            dd($user);
             if ($user->name=="" and $user->family==""){
                 $user_name="کاربر گرامی، ";
             }else{
