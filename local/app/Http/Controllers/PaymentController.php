@@ -62,6 +62,7 @@ class PaymentController extends Controller
                 $user->save();
             }
             $user=User::find(Auth::id());
+            dd($user);
             if ($user->name=="" and $user->family==""){
                 $user_name="کاربر گرامی، ";
             }else{
