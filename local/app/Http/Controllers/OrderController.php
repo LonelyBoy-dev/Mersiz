@@ -90,7 +90,7 @@ class OrderController extends Controller
                     $invoice->uuid();
                     $invoice->amount($price);
                     $unique_id = $invoice->getUuid();
-                    return FacadePayment::callbackUrl(url('/') . '/tverify/' . $unique_id)->purchase(
+                    return FacadePayment::callbackUrl(url('/') . '/payment-verify/' . $unique_id)->purchase(
                         $invoice,
                         function ($driver, $transactionId) use ($unique_id, $request, $carts, $info_address, $first_buy_mony, $send_price, $Total, $factor, $discountcode, $discountcode_darsad) {
                             $code = Discountcode::where('code', $request->discountcode)->first();
