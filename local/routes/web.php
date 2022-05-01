@@ -497,9 +497,8 @@ Route::get('/torder', function () {
 //تایید سفارش 
 Route::post('/tverify/{uniqueid}', function (Request $request) {
 
-    dd($request->uniqueid);
     $is_order = Order::where('refId', $unique_id)->first();
-
+dd($is_order);
     if (!empty($is_order)) {
         try {
             $receipt = Payment::amount(1000)->transactionId($is_order->factor_number)->verify();
