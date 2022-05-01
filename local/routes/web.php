@@ -494,9 +494,9 @@ Route::get('/torder', function () {
 });
 
 //تایید سفارش 
-Route::post('/tverify', function () {
+Route::post('/tverify', function ($unique_id) {
 
-    dd('test');
+    dd($unique_id);
     $is_order = Order::where('refId', $unique_id)->first();
 
     if (!empty($is_order)) {
