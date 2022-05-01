@@ -497,7 +497,7 @@ Route::get('/torder', function () {
 //تایید سفارش 
 Route::post('/tverify/{uniqueid}', function (Request $request) {
 
-    $is_order = Order::where('refId', $unique_id)->first();
+    $is_order = Order::where('refId', $request->uniqueid)->first();
 dd($is_order);
     if (!empty($is_order)) {
         try {
