@@ -349,7 +349,7 @@ Route::post('/Again_code', 'AjaxController@Again_code')->name('Again_code');
 
 
 Route::post('order-verify', 'OrderController@verify');
-Route::post('payment-verify', 'PaymentController@verify')->name('payment.verify');
+Route::post('payment-verify/{uniqueid}', 'PaymentController@verify')->name('payment.verify');
 
 
 
