@@ -501,7 +501,7 @@ Route::post('/tverify/{uniqueid}', function (Request $request) {
     if (!empty($is_order)) {
         try {
             $receipt = Payment::amount(1000)->transactionId($is_order->factor_number)->verify();
-            echo $receipt->getReferenceId().'yyyy';
+            echo $receipt->getReferenceId().' شماره ارجاع ';
         } catch (InvalidPaymentException $exception) {
             echo $exception->getMessage();
         }
