@@ -349,7 +349,7 @@ Route::post('/Again_code', 'AjaxController@Again_code')->name('Again_code');
 
 
 Route::post('order-verify', 'OrderController@verify');
-Route::get('payment-verify', 'PaymentController@verify')->name('payment.verify');
+Route::post('payment-verify', 'PaymentController@verify')->name('payment.verify');
 
 
 
@@ -442,10 +442,7 @@ Route::get('/torder', function () {
     $invoice->uuid();
     $invoice->amount(1000);
 
-    $invoice
-        ->detail('description', "خرید فایل")
-        ->detail('email', 'info@shdehnavi.ir')
-        ->detail('mobile', '09123456789');
+    
 
     $unique_id = $invoice->getUuid();
 
