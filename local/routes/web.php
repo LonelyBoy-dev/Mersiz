@@ -435,7 +435,6 @@ Route::post('verify_phone_number_code', 'Front\FrontAjaxsController@verify_phone
 
 
 /*=====================   درگاه پرداخت پارسیان========================    */
-
 //ثبت سفارش 
 Route::get('/torder', function () {
 
@@ -507,5 +506,4 @@ Route::post('/tverify/{uniqueid}', function (Request $request) {
         }
     }
 })->name('tverify-test');
-
 /*=====================   درگاه پرداخت پارسیان========================    */
