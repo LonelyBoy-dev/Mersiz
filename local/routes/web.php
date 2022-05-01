@@ -12,6 +12,7 @@
 */
 
 use App\Order;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
@@ -494,9 +495,9 @@ Route::get('/torder', function () {
 });
 
 //تایید سفارش 
-Route::post('/tverify/{uniqueid}', function ($unique_id) {
+Route::post('/tverify/{uniqueid}', function (Request $request) {
 
-    dd($unique_id);
+    dd($request->uniqueid);
     $is_order = Order::where('refId', $unique_id)->first();
 
     if (!empty($is_order)) {
