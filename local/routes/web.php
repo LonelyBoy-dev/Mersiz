@@ -12,7 +12,7 @@
 */
 
 use App\Order;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
