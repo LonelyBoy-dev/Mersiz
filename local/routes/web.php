@@ -498,7 +498,6 @@ Route::get('/torder', function () {
 Route::post('/tverify/{uniqueid}', function (Request $request) {
 
     $is_order = Order::where('refId', $request->uniqueid)->first();
-dd($is_order);
     if (!empty($is_order)) {
         try {
             $receipt = Payment::amount(1000)->transactionId($is_order->factor_number)->verify();
